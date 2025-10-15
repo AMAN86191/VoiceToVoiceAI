@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   emoji: {
-    fontSize: 80,
+    fontSize: 40,
     marginBottom: 20,
   },
   text: {

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import SplashScreen from './src/SplashScreen';
+import HomeScreen from './src/HomeScreen'
 
 export default function App() {
   const [isSplashVisible, setIsSplashVisible] = useState(true);
@@ -14,10 +15,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 22}}>Main App Screen</Text>
-      {/* बाकी UI */}
-    </View>
+   <>
+   <HomeScreen />
+   </>
   );
 }
 
