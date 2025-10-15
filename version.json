@@ -1,4 +1,4 @@
 {
-  version: "1",
-  bundleURL: ""
+  "version": "6",
+  "bundleUrl": "https://raw.githubusercontent.com/AMAN86191/OTA-Update-System-React-Native/main/main.1.0.3.bundle"
 }
