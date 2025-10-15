@@ -29,11 +29,11 @@ const HomeScreen = () => {
           <Icon name="share-social-outline" size={26} color="#fff" />
         </TouchableOpacity>
 
-        <Text style={styles.headerText}>AI Modal</Text>
+        <Text style={styles.headerText}>AI JARVIS</Text>
 
         <TouchableOpacity>
           <Image
-            source={require('../assets/images/profile.png')}
+            source={{ uri: 'https://i.pravatar.cc/100' }}
             style={styles.profileImage}
           />
         </TouchableOpacity>
