@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Animated, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const HomeScreen = () => {
@@ -17,6 +18,7 @@ const HomeScreen = () => {
   }, [fadeAnim])
 
   return (
+    <SafeAreaView style={{flex:1}}>
     <LinearGradient
       colors={['#6a11cb', '#2575fc']}
       start={{ x: 0, y: 0 }}
@@ -69,13 +71,15 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </Animated.View>
     </LinearGradient>
+    </SafeAreaView>
+
   )
 }
 
 const styles = StyleSheet.create({
   gradient: { flex: 1, justifyContent: 'flex-start' },
   header: {
-    marginTop: 50,
+    
     paddingHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
