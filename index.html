@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Join Meeting</title>
-    <script>
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const roomId = urlParams.get('roomId');
-            if (roomId) {
-                // Ye aapki app ko trigger karega
-                window.location.href = "videoapp://join?roomId=" + roomId;
-                
-                // 3 second baad agar app nahi khuli toh Play Store par bhej sakte hain
-                setTimeout(() => {
-                    alert("Please install the app to join the meeting.");
-                }, 3000);
-            }
-        };
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join My Video Meeting</title>
+    <style>
+        body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; background: #121212; color: white; text-align: center; }
+        .btn { background: #3498db; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <h1>Redirecting to App...</h1>
+    <div>
+        <h1>Video Call Invitation</h1>
+        <p id="msg">Redirecting you to the app...</p><br><br>
+        <a id="joinBtn" href="#" class="btn">Join in App</a>
+    </div>
+
+    <script>
+        // URL se roomId nikalna: https://your-link.vercel.app/?roomId=abc-123
+        const params = new URLSearchParams(window.location.search);
+        const roomId = params.get('roomId');
+
+        if (roomId) {
+            const appLink = "videoapp://join?roomId=" + roomId;
+            document.getElementById('joinBtn').href = appLink;
+            
+            // Auto-open app
+            window.location.href = appLink;
+            
+            document.getElementById('msg').innerText = "Joining Room ID: " + roomId;
+        } else {
+            document.getElementById('msg').innerText = "Invalid Meeting Link.";
+        }
+    </script>
 </body>
 </html>
