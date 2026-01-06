@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join Meeting</title>
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roomId = urlParams.get('roomId');
+            if (roomId) {
+                // Ye aapki app ko trigger karega
+                window.location.href = "videoapp://join?roomId=" + roomId;
+                
+                // 3 second baad agar app nahi khuli toh Play Store par bhej sakte hain
+                setTimeout(() => {
+                    alert("Please install the app to join the meeting.");
+                }, 3000);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Redirecting to App...</h1>
+</body>
+</html>
