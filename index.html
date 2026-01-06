@@ -1,36 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <title>Video Meeting Redirect</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join My Video Meeting</title>
-    <style>
-        body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; background: #121212; color: white; text-align: center; }
-        .btn { background: #3498db; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; }
-    </style>
 </head>
-<body>
-    <div>
-        <h1>Video Call Invitation</h1>
-        <p id="msg">Redirecting you to the app...</p><br><br>
-        <a id="joinBtn" href="#" class="btn">Join in App</a>
-    </div>
+<body style="background: #121212; color: white; font-family: sans-serif; text-align: center; padding-top: 50px;">
+    <h2>Joining Meeting...</h2>
+    <p id="status">Checking for Room ID...</p>
+    <br>
+    <a id="appButton" style="display:none; background:#3498db; color:white; padding:15px; border-radius:10px; text-decoration:none;" href="#">Open App Manually</a>
 
     <script>
-        // URL se roomId nikalna: https://your-link.vercel.app/?roomId=abc-123
-        const params = new URLSearchParams(window.location.search);
-        const roomId = params.get('roomId');
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('roomId');
 
         if (roomId) {
-            const appLink = "videoapp://join?roomId=" + roomId;
-            document.getElementById('joinBtn').href = appLink;
+            document.getElementById('status').innerText = "Redirecting to App for Room: " + roomId;
+            const appUrl = "videoapp://join?roomId=" + roomId;
             
-            // Auto-open app
-            window.location.href = appLink;
-            
-            document.getElementById('msg').innerText = "Joining Room ID: " + roomId;
+            // Link update
+            document.getElementById('appButton').href = appUrl;
+            document.getElementById('appButton').style.display = "inline-block";
+
+            // Auto Redirect
+            window.location.href = appUrl;
         } else {
-            document.getElementById('msg').innerText = "Invalid Meeting Link.";
+            document.getElementById('status').innerText = "Error: No Room ID found in link.";
         }
     </script>
 </body>
